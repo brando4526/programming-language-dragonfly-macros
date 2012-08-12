@@ -32,11 +32,12 @@ class HTMLTags(MappingRule):
     mapping  = {
                    "doc type":          Text("<!DOCTYPE HTML>"),
                    "comment":           Text( "<!---->" ) + Key( "left" ) + Key( "left" ) + Key( "left" ),
-                   "tags":              Text("<></>"),
+                   "tags":              Text("<>") + Text("</>"),
+                   "single tag":        Text("</>"),
                    "line break":        Text( "<br />" ),
                    "image":             Text( "<img />" ),
                    "equals":            Text( "=" ),
-                   "<tagname> tags":    Text("<%(tagname)s></%(tagname)s>"),
+                   "<tagname> tags":    Text("<%(tagname)s>") ,#+ Text("</%(tagname)s>"),
 
                    # used to specify tag attributes
                    "attribute":                             Text( ' attributeName=""' ) + Key( "left" ),
